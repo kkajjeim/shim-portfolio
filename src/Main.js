@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link as LINK } from "react-router-dom";
 import {
   Link,
   DirectLink,
@@ -23,6 +24,9 @@ import iconMysql from "./assets/sql.png";
 
 import mainIllust from "./assets/drawkit-server-woman-colour.svg";
 import supportIllust from "./assets/drawkit-developer-woman-colour.svg";
+
+import projectBook from "./assets/book01.png";
+import projectTravel from "./assets/travel01.png";
 
 import "./Main.css";
 
@@ -223,9 +227,14 @@ class Main extends React.Component {
         {/* Skills */}
         <div className="skills">
           <Element name="test2" className="element"></Element>
-          <div className="skills_container" style={{ padding: "7% 15%" }}>
+          <div
+            className="skills_container"
+            style={{
+              padding: "10% 15% 5% 15%"
+            }}
+          >
             <div className="skills_container_head">
-              <p style={{ fontSize: "1.8em", marginBottom: "15px" }}>
+              <p style={{ fontSize: "1.8em", marginBottom: "20px" }}>
                 Technical Skills
               </p>
               <p style={{ fontSize: "1em" }}>
@@ -435,25 +444,141 @@ class Main extends React.Component {
         <div className="projects">
           <Element name="test3" className="element"></Element>
 
-          <div className="projects_container" style={{ padding: "6% 15%" }}>
+          <div
+            className="projects_container"
+            style={{
+              paddingTop: "8%",
+              paddingLeft: "15%",
+              paddingRight: "15%"
+            }}
+          >
             <div
               className="projects_container_head"
-              style={{ textAlign: "right" }}
+              style={{ textAlign: "left", marginBottom: "50px" }}
             >
-              <p style={{ fontSize: "1.8em", marginBottom: "15px" }}>
+              <p style={{ fontSize: "1.8em", marginBottom: "20px" }}>
                 Projects
               </p>
-              <p style={{ fontSize: "1em" }}>
-                프로젝트를 진행하며 경험하고 학습한 기술스택입니다.
+              <p style={{ fontSize: "1em", marginBottom: "8px" }}>
+                기획부터 설계, 프로토타이핑, 개발 모든 과정에 참여하였던
+                프로젝트입니다.
               </p>
+              <p style={{ fontSize: "1em" }}>
+                각 프로젝트를 클릭하여 상세 내용을 확인하실 수 있습니다.
+              </p>
+            </div>
+            <div className="projects_container_body">
+              <div className="uk-flex">
+                <div>
+                  <LINK to="/booktogether" style={{ textDecoration: "none" }}>
+                    <div
+                      className="uk-card uk-card-hover uk-card-default"
+                      style={{ width: "95%" }}
+                    >
+                      <div className="uk-card-media-top">
+                        <img src={projectBook} alt="" />
+                      </div>
+                      <div className="uk-card-body">
+                        <h3 className="uk-card-title">
+                          서(書)로모임{" "}
+                          <span style={{ fontSize: "0.8em" }}>| Front-end</span>
+                        </h3>
+                        <p style={{ marginTop: "15px" }}>
+                          React, Redux (Redux-Thunk), UIKit, Quill, TypeScript
+                        </p>
+                        <p style={{ marginTop: "15px" }}>2019.11 ~ 2019.12</p>
+                      </div>
+                    </div>
+                  </LINK>
+                </div>
+
+                <div>
+                  <LINK
+                    to="/travelcalculator"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <div
+                      className="uk-card uk-card-hover uk-card-default"
+                      style={{ width: "95%" }}
+                    >
+                      <div className="uk-card-media-top">
+                        <img src={projectTravel} alt="" />
+                      </div>
+                      <div className="uk-card-body">
+                        <h3 className="uk-card-title">
+                          여행 계산기{" "}
+                          <span style={{ fontSize: "0.8em" }}>| Back-end</span>
+                        </h3>
+                        <p style={{ marginTop: "15px" }}>
+                          Node.js, Express, MySQL, Sequelize
+                        </p>
+                        <p style={{ marginTop: "15px" }}>2019.11 ~ 2019.11</p>
+                      </div>
+                    </div>
+                  </LINK>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         {/* Contact */}
-        <div className="contacts" style={{ marginTop: "1000px" }}>
-          <Element name="test4" className="element">
-            test 4
-          </Element>
+        <div className="contacts">
+          <Element name="test4" className="element"></Element>
+          <div
+            className="contacts_container"
+            style={{
+              marginTop: "7%",
+              padding: "3% 15% 1px 15%",
+              backgroundColor: "#FED385"
+            }}
+          >
+            <div
+              className="contacts_container_head"
+              style={{ textAlign: "left", marginBottom: "50px" }}
+            >
+              <p style={{ fontSize: "1.8em", marginBottom: "20px" }}>
+                Contacts
+              </p>
+
+              <span style={{ fontSize: "1em", marginBottom: "8px" }}>
+                심경주
+              </span>
+              <span style={{ margin: "0 10px" }}>| </span>
+              <span style={{ fontSize: "1em", marginBottom: "8px" }}>
+                이메일 kyungju.shim@gmail.com
+              </span>
+              <span
+                style={{ fontSize: "1em", float: "right", marginLeft: "20px" }}
+              >
+                <a
+                  href="https://github.com/roundshoulderim"
+                  style={{ color: "#121212" }}
+                >
+                  깃허브
+                  <i class="fab fa-github" style={{ marginLeft: "5px" }}></i>
+                </a>
+              </span>
+              <span style={{ fontSize: "1em", float: "right" }}>
+                <a
+                  href="https://medium.com/@roundshoulderim"
+                  style={{ color: "#121212" }}
+                >
+                  블로그
+                  <i class="fab fa-medium" style={{ marginLeft: "5px" }}></i>
+                </a>
+              </span>
+              <p
+                style={{
+                  color: "#383b3d",
+                  marginTop: "13px",
+                  fontSize: "0.8em"
+                }}
+              >
+                {" "}
+                Copyright © 2019 Kyungju Shim
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );

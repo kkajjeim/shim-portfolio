@@ -3,3 +3,7 @@
   font-weight: 300;
   /* padding: 0 10%; */
 }
+
+.uk-card:hover {
+  cursor: pointer;
+}
