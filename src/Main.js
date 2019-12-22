@@ -11,7 +11,18 @@ import {
 
 import K from "./assets/k.png";
 import J from "./assets/j1.png";
+import iconServer from "./assets/server_icon.png";
+import iconBrowser from "./assets/browser_icon.png";
+import iconJS from "./assets/js.png";
+import iconTS from "./assets/ts.png";
+import iconRedux from "./assets/redux.png";
+import iconReact from "./assets/react.png";
+import iconNode from "./assets/node.png";
+import iconExpress from "./assets/express.png";
+import iconMysql from "./assets/sql.png";
+
 import mainIllust from "./assets/drawkit-server-woman-colour.svg";
+import supportIllust from "./assets/drawkit-developer-woman-colour.svg";
 
 import "./Main.css";
 
@@ -180,11 +191,11 @@ class Main extends React.Component {
                 marginBottom: "7%",
                 fontFamily: "Noto Sans KR",
                 fontWeight: "100",
-                fontSize: "2vw",
+                fontSize: "2em",
                 marginLeft: "15%"
               }}
             >
-              <p style={{ marginBottom: "20px" }}>안녕하세요, </p>
+              <p style={{ marginBottom: "10px" }}>안녕하세요, </p>
               <p>
                 웹 개발자 <span style={{ fontWeight: "300" }}>심경주</span>
                 입니다.
@@ -211,15 +222,232 @@ class Main extends React.Component {
         </div>
         {/* Skills */}
         <div className="skills">
-          <Element name="test2" className="element">
-            test 2
-          </Element>
+          <Element name="test2" className="element"></Element>
+          <div className="skills_container" style={{ padding: "7% 15%" }}>
+            <div className="skills_container_head">
+              <p style={{ fontSize: "1.8em", marginBottom: "15px" }}>
+                Technical Skills
+              </p>
+              <p style={{ fontSize: "1em" }}>
+                프로젝트를 진행하며 경험하고 학습한 기술스택입니다.
+              </p>
+            </div>
+            <div
+              className="skills_container_body"
+              style={{ marginTop: "100px" }}
+            >
+              <div
+                className="skills_container_body_front"
+                style={{ display: "flex" }}
+              >
+                <div style={{ textAlign: "center" }}>
+                  <img
+                    src={iconBrowser}
+                    alt="browser"
+                    style={{ width: "70px", height: "70px", opacity: "0.8" }}
+                  />
+                  <p
+                    style={{
+                      width: "100%",
+                      marginTop: "17px",
+                      fontSize: "1.1em",
+                      fontWeight: "300"
+                    }}
+                  >
+                    Front-end
+                  </p>
+                </div>
+                <div
+                  style={{
+                    marginLeft: "8%",
+                    borderLeft: "1px dotted gray",
+                    height: "110px"
+                  }}
+                ></div>
+                <div
+                  className="front_icons"
+                  style={{
+                    width: "60%",
+                    marginLeft: "4%",
+                    display: "flex",
+                    justifyContent: "space-around"
+                  }}
+                >
+                  <div className="js" style={{ textAlign: "center" }}>
+                    <img src={iconJS} alt="js" style={{ width: "60px" }} />
+                    <p style={{ marginTop: "10px" }}>JavaScript</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      mainly
+                    </p>
+                  </div>
+                  <div className="react" style={{ textAlign: "center" }}>
+                    <img
+                      src={iconReact}
+                      alt="react"
+                      style={{ width: "60px" }}
+                    />
+                    <p style={{ marginTop: "10px" }}>React</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      mainly
+                    </p>
+                  </div>
+                  <div className="redux" style={{ textAlign: "center" }}>
+                    <img src={iconRedux} alt="js" style={{ width: "60px" }} />
+                    <p style={{ marginTop: "14px" }}>Redux</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      experienced
+                    </p>
+                  </div>
+                  <div className="ts" style={{ textAlign: "center" }}>
+                    <img src={iconTS} alt="js" style={{ width: "60px" }} />
+                    <p style={{ marginTop: "10px" }}>TypeScript</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      experienced
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="skills_container_body_back"
+                style={{ display: "flex", marginTop: "70px" }}
+              >
+                <div style={{ textAlign: "center" }}>
+                  <img
+                    src={iconServer}
+                    alt="server"
+                    style={{ width: "70px", height: "70px", opacity: "0.8" }}
+                  />
+                  <p
+                    style={{
+                      width: "100%",
+                      marginTop: "17px",
+                      fontSize: "1.1em",
+                      fontWeight: "300"
+                    }}
+                  >
+                    Back-end
+                  </p>
+                </div>
+                <div
+                  style={{
+                    marginLeft: "8%",
+                    borderLeft: "1px dotted gray",
+                    height: "110px"
+                  }}
+                ></div>
+                <div
+                  className="front_icons"
+                  style={{
+                    width: "60%",
+                    marginLeft: "4%",
+                    display: "flex",
+                    justifyContent: "space-around"
+                  }}
+                >
+                  <div className="js" style={{ textAlign: "center" }}>
+                    <img src={iconNode} alt="node" style={{ width: "60px" }} />
+                    <p style={{ marginTop: "10px" }}>Node.js</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      mainly
+                    </p>
+                  </div>
+                  <div className="react" style={{ textAlign: "center" }}>
+                    <img
+                      src={iconExpress}
+                      alt="express"
+                      style={{ width: "60px", marginTop: "23px" }}
+                    />
+                    <p style={{ marginTop: "35px" }}>Express</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      experienced
+                    </p>
+                  </div>
+                  <div className="redux" style={{ textAlign: "center" }}>
+                    <img src={iconMysql} alt="js" style={{ width: "60px" }} />
+                    <p style={{ marginTop: "10px" }}>MySQL</p>
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "900",
+                        fontSize: "0.7em",
+                        fontStyle: "italic",
+                        color: "gray"
+                      }}
+                    >
+                      experienced
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         {/* Projects */}
         <div className="projects">
-          <Element name="test3" className="element">
-            test 3
-          </Element>
+          <Element name="test3" className="element"></Element>
+
+          <div className="projects_container" style={{ padding: "6% 15%" }}>
+            <div
+              className="projects_container_head"
+              style={{ textAlign: "right" }}
+            >
+              <p style={{ fontSize: "1.8em", marginBottom: "15px" }}>
+                Projects
+              </p>
+              <p style={{ fontSize: "1em" }}>
+                프로젝트를 진행하며 경험하고 학습한 기술스택입니다.
+              </p>
+            </div>
+          </div>
         </div>
         {/* Contact */}
         <div className="contacts" style={{ marginTop: "1000px" }}>
