@@ -1,269 +1,233 @@
-import React from "react";
-import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
+import React, { useState } from "react";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
+
+import K from "./assets/k.png";
+import J from "./assets/j1.png";
+import mainIllust from "./assets/drawkit-server-woman-colour.svg";
+
 import "./Main.css";
 
-// Little helpers ...
-const url = (name, wrap = false) =>
-  `${
-    wrap ? "url(" : ""
-  }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-    wrap ? ")" : ""
-  }`;
-
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.scrollToTop = this.scrollToTop.bind(this);
+  }
+
+  componentDidMount() {
+    Events.scrollEvent.register("begin", function() {
+      console.log("begin", arguments);
+    });
+
+    Events.scrollEvent.register("end", function() {
+      console.log("end", arguments);
+    });
+  }
+
+  scrollToTop() {
+    scroll.scrollToTop();
+  }
+
+  scrollTo() {
+    scroller.scrollTo("scroll-to-element", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart"
+    });
+  }
+
+  scrollToWithContainer() {
+    let goToContainer = new Promise((resolve, reject) => {
+      Events.scrollEvent.register("end", () => {
+        resolve();
+        Events.scrollEvent.remove("end");
+      });
+
+      scroller.scrollTo("scroll-container", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart"
+      });
+    });
+
+    goToContainer.then(() =>
+      scroller.scrollTo("scroll-container-second-element", {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        containerId: "scroll-container"
+      })
+    );
+  }
+  componentWillUnmount() {
+    Events.scrollEvent.remove("begin");
+    Events.scrollEvent.remove("end");
+  }
+
   render() {
     return (
-      <Parallax ref={ref => (this.parallax = ref)} pages={3}>
-        <ParallaxLayer
-          offset={1}
-          factor={0.8}
-          speed={1}
-          style={{ backgroundColor: "#ff5851" }}
-        />
-        <ParallaxLayer
-          offset={2}
-          speed={1}
-          style={{ backgroundColor: "#1c323d" }}
-        />
-
-        <ParallaxLayer
-          offset={0}
-          speed={0}
-          factor={3}
+      <div className="main">
+        {/* logo */}
+        <div
           style={{
-            backgroundImage: url("stars", true),
-            backgroundSize: "cover"
-          }}
-        />
-
-        <ParallaxLayer
-          className="firstLayer"
-          factor={1}
-          offset={0}
-          speed={1}
-          onClick={() => this.parallax.scrollTo(1)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
+            position: "fixed",
+            zIndex: "990",
+            paddingTop: "40px",
+            paddingLeft: "15%",
+            paddingRight: "20%",
+            fontFamily: "Raleway",
+            fontWeight: "400"
           }}
         >
-          <div
+          KYUNGJU
+          <span style={{ color: "#6BD5E1", fontWeight: "900" }}> SHIM</span>
+          {/*  <img src={K} alt="K" style={{ width: "37px" }} />
+          <img src={J} alt="J" style={{ width: "37px", marginLeft: "-7px" }} /> */}
+        </div>
+        {/* Navbar */}
+        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+          <nav
+            className="uk-navbar-container"
+            uk-navbar
             style={{
-              color: "#1C1A20",
-              width: "50%"
+              position: "relative",
+              zIndex: "980",
+              backgroundColor: "white",
+              fontWeight: "400",
+              paddingTop: "9px",
+              paddingRight: "15%",
+              paddingBottom: "3px"
+            }}
+          >
+            <div className="uk-navbar-right uk-flex uk-flex-right@s">
+              <ul className="uk-navbar-nav">
+                <li>
+                  <Link
+                    activeClass="active"
+                    className="test1"
+                    to="test1"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    activeClass="active"
+                    className="test2"
+                    to="test2"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    Skills
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    activeClass="active"
+                    className="test3"
+                    to="test3"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    activeClass="active"
+                    className="test4"
+                    to="test4"
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                  >
+                    Contacts
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        {/* About */}
+        <div className="about">
+          <Element name="test1" className="element"></Element>
+          <div
+            className="about_contents"
+            style={{
+              width: "100%",
+              maxHeight: "50%",
+              display: "flex",
+              backgroundColor: "#F3F3F3"
             }}
           >
             <div
+              className="about_contents_text"
               style={{
-                fontSize: "3em",
-                fontFamily: "Raleway, sans-serif",
-                fontWeight: "bolder",
-                marginBottom: "30px",
-                color: "#ff5851"
-              }}
-            >
-              HELLO
-            </div>
-            <div
-              style={{
-                backgroundColor: "#27555d",
                 width: "100%",
-                height: "1px"
-              }}
-            ></div>
-            <div
-              style={{
-                marginTop: "50px",
+                marginTop: "7%",
+                marginBottom: "7%",
                 fontFamily: "Noto Sans KR",
-                fontWeight: "100"
+                fontWeight: "100",
+                fontSize: "2vw",
+                marginLeft: "15%"
               }}
             >
+              <p style={{ marginBottom: "20px" }}>안녕하세요, </p>
               <p>
-                안녕하세요, 웹 개발자{" "}
-                <span style={{ fontWeight: "300" }}>심경주</span>입니다.
+                웹 개발자 <span style={{ fontWeight: "300" }}>심경주</span>
+                입니다.
               </p>
             </div>
-
             <div
-              className="scroll"
+              className="about_contents_image"
               style={{
-                marginTop: "15%",
-                fontFamily: "Libre Baskerville",
-                fontStyle: "italic",
-                fontSize: "0.7em"
+                textAlign: "right"
               }}
             >
-              <p>scroll down</p>
+              <img
+                src={mainIllust}
+                alt="illustration"
+                style={{
+                  width: "40%",
+                  position: "absolute",
+                  top: "6%",
+                  right: "15%"
+                }}
+              />
             </div>
           </div>
-
-          {/* <img src={url("server")} style={{ width: "20%" }} /> */}
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={1}
-          speed={0.5}
-          onClick={() => this.parallax.scrollTo(2)}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "-50px"
-          }}
-        >
-          <div>
-            <p
-              style={{
-                textAlign: "left",
-                fontSize: "1.8em",
-                fontFamily: "Raleway, sans-serif",
-                fontWeight: "bolder"
-              }}
-            >
-              TECHNICAL SKILLS
-            </p>
-            <div style={{ textAlign: "left" }}>
-              <div>
-                <span
-                  style={{
-                    fontFamily: "Raleway, sans-serif",
-                    fontSize: "1em"
-                  }}
-                >
-                  mainly
-                </span>{" "}
-                <div style={{ border: "0.5px solid" }}></div>
-                <div style={{ marginTop: "20px" }}>
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px"
-                    }}
-                    alt="js_logo"
-                  />
-                  <img
-                    src="http://daynin.github.io/clojurescript-presentation/img/react-logo.png"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px"
-                    }}
-                    alt="react_logo"
-                  />
-                  <img
-                    src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px",
-                      paddingBottom: "15px"
-                    }}
-                    alt="nodejs_logo"
-                  />
-                </div>
-              </div>
-              <div style={{ marginTop: "30px" }}>
-                <span
-                  style={{
-                    fontFamily: "Raleway, sans-serif",
-                    fontSize: "1em"
-                  }}
-                >
-                  experienced
-                </span>
-                <div style={{ border: "0.5px solid" }}></div>
-                <div style={{ marginTop: "20px" }}>
-                  <img
-                    src="https://images.velog.io/post-images/ashnamuh/5d715390-aaa3-11e9-9dfd-b10d906fc372/tsblog.png"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px"
-                    }}
-                    alt="ts_logo"
-                  />
-                  <img
-                    src="https://raw.githubusercontent.com/1ambda/1ambda.github.io/master/assets/images/redux/redux_logo.png?width=30%&height=30%"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px"
-                    }}
-                    alt="redux_logo"
-                  />
-                  <img
-                    src="https://sitest-wp.s3.amazonaws.com/blog/wp-content/uploads/2017/07/express.png"
-                    style={{
-                      width: "100px",
-                      height: "auto",
-                      marginRight: "40px",
-                      paddingBottom: "35px"
-                    }}
-                    alt="express_logo"
-                  />
-                  <img
-                    src="http://emekaokwor.com/images/mysql.png"
-                    style={{
-                      width: "100px",
-                      height: "auto"
-                    }}
-                    alt="mysql_logo"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <img src={url("bash")} style={{ width: "40%" }} /> */}
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={2}
-          speed={-0}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-          onClick={() => this.parallax.scrollTo(0)}
-        >
-          <div style={{ width: "80%", display: "flex" }}>
-            <div
-              style={{
-                display: "inline-block",
-                textAlign: "left",
-                fontFamily: "Raleway, sans-serif",
-                fontSize: "2.4em",
-                fontWeight: "bolder",
-                color: "white"
-              }}
-            >
-              CONTACT
-            </div>
-            <div
-              style={{
-                display: "inline-block",
-                marginLeft: "10%",
-                textAlign: "left",
-                fontFamily: "Raleway, sans-serif",
-                fontSize: "0.8em",
-                fontWeight: "400",
-                color: "white"
-              }}
-            >
-              kyungju.shim@gmail.com
-              <div style={{ marginTop: "5%" }}>
-                <i class="fab fa-github"></i>
-                <i class="fab fa-medium" style={{ marginLeft: "5%" }}></i>
-              </div>
-            </div>
-          </div>
-
-          {/* <img src={url("clients-main")} style={{ width: "40%" }} /> */}
-        </ParallaxLayer>
-      </Parallax>
+        </div>
+        {/* Skills */}
+        <div className="skills">
+          <Element name="test2" className="element">
+            test 2
+          </Element>
+        </div>
+        {/* Projects */}
+        <div className="projects">
+          <Element name="test3" className="element">
+            test 3
+          </Element>
+        </div>
+        {/* Contact */}
+        <div className="contacts" style={{ marginTop: "1000px" }}>
+          <Element name="test4" className="element">
+            test 4
+          </Element>
+        </div>
+      </div>
     );
   }
 }

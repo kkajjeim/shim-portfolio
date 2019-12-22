@@ -1,0 +1,10 @@
+.scroll {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.firstLayer:hover .scroll {
+  visibility: visible;
+  opacity: 1;
+}
